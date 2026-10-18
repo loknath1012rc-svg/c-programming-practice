@@ -1,0 +1,26 @@
+
+#include <stdio.h>
+
+int main() {
+    int distance, battery;
+
+    printf("=== AI ROBOT SIMULATOR ===\n");
+
+    printf("Enter obstacle distance (cm): ");
+    scanf("%d", &distance);
+
+    printf("Enter battery level (%%): ");
+    scanf("%d", &battery);
+
+    printf("\nRobot analysis:\n");
+
+    if (battery < 20) {
+        printf("LOW BATTERY: Return to charging station!\n");
+    } else if (distance < 20) {
+        printf("OBSTACLE DETECTED: Stop and turn!\n");
+    } else {
+        printf("PATH CLEAR: Move forward!\n");
+    }
+
+    return 0;
+}
