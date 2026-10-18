@@ -1,0 +1,32 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#define WAIT(ms) Sleep(ms)
+#else
+#include <unistd.h>
+#define WAIT(ms) usleep((ms) * 1000)
+#endif
+
+int main() {
+    int i, j;
+    char symbols[] = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    srand((unsigned)time(NULL));
+
+    while (1) {
+        for (i = 0; i < 10; i++) {
+            for (j = 0; j < 60; j++) {
+                printf("%c ", symbols[rand() % 28]);
+            }
+            printf("\n");
+        }
+        WAIT(200);
+        printf("\033[H\033[J");
+    }
+
+    return 0;
+}
